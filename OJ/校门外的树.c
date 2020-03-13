@@ -30,14 +30,26 @@ int main()
             }
         }
     }
-    a=tree[0][0];
-    for(i=0;i<nM;i++)
-    {
-        if(a<tree[i][1])
-        {
-            nTotal=nTotal-max(a,tree[i][0]);
-        }    
 
+
+    nTotal=nTotal-tree[0][1]+tree[0][0];
+
+    a=tree[0][1];
+    for(i=1;i<nM;i++)
+    {
+        if(a<tree[i][0])
+        {
+            nTotal=nTotal-tree[i][1]+tree[i][0]-1;
+            a=tree[i][1];
+
+        }
+        else if(a<tree[i][1])
+        {
+            nTotal=nTotal-tree[i][1]+a;
+            a=tree[i][1];
+
+        }
     }
-    printf("%d",nTotal);
+    printf("%d\n",nTotal);
+    return 0;
 }
